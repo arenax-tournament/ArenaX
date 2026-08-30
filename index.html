@@ -70,10 +70,7 @@
             padding: 16px;
         }
 
-        .graphical-dialog-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .graphical-dialog-overlay.active { opacity: 1; visibility: visible; }
 
         .graphical-dialog-box {
             background: linear-gradient(145deg, rgba(22, 22, 45, 0.98), rgba(12, 12, 28, 0.98));
@@ -90,9 +87,7 @@
             overflow: hidden;
         }
 
-        .graphical-dialog-overlay.active .graphical-dialog-box {
-            transform: scale(1) translateY(0);
-        }
+        .graphical-dialog-overlay.active .graphical-dialog-box { transform: scale(1) translateY(0); }
 
         .dialog-icon-wrap {
             width: 60px;
@@ -108,87 +103,19 @@
             box-shadow: 0 0 20px rgba(233, 69, 96, 0.3);
         }
 
-        .dialog-icon-wrap.confirm {
-            background: rgba(255, 75, 43, 0.15);
-            border-color: #ff4b2b;
-            color: #ff4b2b;
-            box-shadow: 0 0 20px rgba(255, 75, 43, 0.3);
-        }
+        .dialog-icon-wrap.confirm { background: rgba(255, 75, 43, 0.15); border-color: #ff4b2b; color: #ff4b2b; box-shadow: 0 0 20px rgba(255, 75, 43, 0.3); }
+        .dialog-icon-wrap.success { background: rgba(46, 204, 113, 0.15); border-color: var(--green-live); color: var(--green-live); box-shadow: 0 0 20px rgba(46, 204, 113, 0.3); }
+        .dialog-icon-wrap.warning { background: rgba(255, 215, 0, 0.15); border-color: var(--gold); color: var(--gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
 
-        .dialog-icon-wrap.success {
-            background: rgba(46, 204, 113, 0.15);
-            border-color: var(--green-live);
-            color: var(--green-live);
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
-        }
-
-        .dialog-icon-wrap.warning {
-            background: rgba(255, 215, 0, 0.15);
-            border-color: var(--gold);
-            color: var(--gold);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .dialog-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 17px;
-            font-weight: 900;
-            color: #fff;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .dialog-desc {
-            font-size: 12.5px;
-            color: #cbd5e1;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
-        .dialog-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .dialog-actions button {
-            flex: 1;
-            padding: 11px;
-            border-radius: 10px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 12px;
-            font-weight: 800;
-            cursor: pointer;
-            border: none;
-            transition: 0.2s ease;
-        }
-
-        .dialog-btn-cancel {
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--text-sub);
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        }
-
-        .dialog-btn-cancel:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-        }
-
-        .dialog-btn-primary {
-            background: linear-gradient(135deg, var(--primary-neon), #ff4b2b);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
-        }
-
-        .dialog-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
-        }
-
-        .dialog-btn-cyan {
-            background: linear-gradient(135deg, var(--cyber-cyan), #00a8ff);
-            color: #000;
-            box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4);
-        }
+        .dialog-title { font-family: 'Orbitron', sans-serif; font-size: 17px; font-weight: 900; color: #fff; margin-bottom: 8px; letter-spacing: 0.5px; }
+        .dialog-desc { font-size: 12.5px; color: #cbd5e1; line-height: 1.5; margin-bottom: 20px; }
+        .dialog-actions { display: flex; gap: 10px; }
+        .dialog-actions button { flex: 1; padding: 11px; border-radius: 10px; font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 800; cursor: pointer; border: none; transition: 0.2s ease; }
+        .dialog-btn-cancel { background: rgba(255, 255, 255, 0.08); color: var(--text-sub); border: 1px solid rgba(255, 255, 255, 0.12) !important; }
+        .dialog-btn-cancel:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+        .dialog-btn-primary { background: linear-gradient(135deg, var(--primary-neon), #ff4b2b); color: #fff; box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4); }
+        .dialog-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6); }
+        .dialog-btn-cyan { background: linear-gradient(135deg, var(--cyber-cyan), #00a8ff); color: #000; box-shadow: 0 4px 15px rgba(0, 243, 255, 0.4); }
 
         /* ─── GRAPHICAL TOAST NOTIFICATION ─── */
         .graphical-toast {
@@ -213,10 +140,7 @@
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .graphical-toast.active {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+        .graphical-toast.active { opacity: 1; transform: translateX(-50%) translateY(0); }
 
         /* ─── CYBER RADAR RING LOGIN OVERLAY ANIMATION ─── */
         .login-overlay {
@@ -666,7 +590,7 @@
                             </div>
                         </div>
 
-                        <!-- 2. Instagram Profile Card (Same Design as Email) -->
+                        <!-- 2. Instagram Profile Card -->
                         <div class="account-card tilt-card">
                             <h3 style="color: #e1306c; font-size: 15px;">📸 Instagram Profile</h3>
                             <p style="color: var(--text-sub); font-size: 11px; margin-top: 2px;">Player Identification & Community</p>
@@ -802,6 +726,7 @@
 
         let currentUser = null, userData = null, allTournaments = {};
         let selectedGame = null, selectedType = null, pendingAuthUser = null;
+        let pendingRedirectTarget = null;
 
         const loginOverlay = document.getElementById('loginOverlay');
         const loaderTitle = document.getElementById('loaderTitle');
@@ -1049,13 +974,143 @@
                 allTournaments = snap.val() || {};
                 renderGames();
                 loadMyTournaments();
-                if (selectedGame && !selectedType) selectGame(selectedGame);
-                if (selectedGame && selectedType) renderTournaments('all');
+
+                if (pendingRedirectTarget) {
+                    const target = pendingRedirectTarget;
+                    pendingRedirectTarget = null;
+                    navigateByRedirectUrl(target);
+                } else {
+                    if (selectedGame && !selectedType) selectGame(selectedGame);
+                    if (selectedGame && selectedType) renderTournaments('all');
+                }
             });
 
             loadTransactions();
             listenToWithdrawals();
             initAnnouncementBannerSlider();
+
+            // Check URL Hash on initial launch
+            if (window.location.hash) {
+                navigateByRedirectUrl(window.location.hash);
+            }
+
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash) {
+                    navigateByRedirectUrl(window.location.hash);
+                }
+            });
+        }
+
+        // ─── REDIRECT URL & DEEP LINK ROUTER ───
+        function navigateByRedirectUrl(targetUrl) {
+            if (!targetUrl) {
+                showSection('tournaments');
+                return;
+            }
+
+            let raw = String(targetUrl).trim();
+
+            if (raw.startsWith('http://') || raw.startsWith('https://')) {
+                window.open(raw, '_blank', 'noopener,noreferrer');
+                return;
+            }
+
+            if (raw.startsWith('#')) raw = raw.substring(1);
+            raw = raw.toLowerCase().trim();
+
+            if (!raw) {
+                showSection('tournaments');
+                return;
+            }
+
+            // Wallet, Matches, Account
+            if (raw === 'wallet' || raw === 'topup' || raw === 'withdraw') {
+                showSection('wallet');
+                return;
+            }
+            if (raw === 'mytournaments' || raw === 'mymatches' || raw === 'my-matches' || raw === 'joined') {
+                showSection('myTournaments');
+                return;
+            }
+            if (raw === 'account' || raw === 'profile') {
+                showSection('account');
+                return;
+            }
+
+            // If tournaments data is not yet ready, queue it
+            if (!allTournaments || Object.keys(allTournaments).length === 0) {
+                pendingRedirectTarget = targetUrl;
+                showSection('tournaments');
+                return;
+            }
+
+            // 1. FREE FIRE MODES
+            if (raw.includes('freefire') || raw.includes('free_fire') || raw.startsWith('ff:') || raw === 'ff' || raw.startsWith('game:free fire')) {
+                showSection('tournaments');
+                selectGame('Free Fire');
+
+                if (raw.includes('1v1')) { selectType('1v1'); return; }
+                if (raw.includes('2v2')) { selectType('2v2'); return; }
+                if (raw.includes('3v3')) { selectType('3v3'); return; }
+                if (raw.includes('4v4') || raw.includes('cs') || raw.includes('clashsquad') || raw.includes('clash_squad')) { selectType('4v4'); return; }
+                if (raw.includes('5v5')) { selectType('5v5'); return; }
+                if (raw.includes('6v6')) { selectType('6v6'); return; }
+                if (raw.includes('solo')) { selectType('solo'); return; }
+                if (raw.includes('squad')) { selectType('squad'); return; }
+                return;
+            }
+
+            // 2. BGMI MODES
+            if (raw.includes('bgmi') || raw.includes('pubg') || raw.startsWith('game:bgmi')) {
+                showSection('tournaments');
+                selectGame('BGMI');
+
+                if (raw.includes('tdm')) { selectType('tdm'); return; }
+                if (raw.includes('solo')) { selectType('solo'); return; }
+                if (raw.includes('squad')) { selectType('squad'); return; }
+                return;
+            }
+
+            // 3. DIRECT SHORTHAND MODES
+            if (['1v1', '2v2', '3v3', '4v4', '5v5', '6v6'].includes(raw)) {
+                showSection('tournaments');
+                selectGame('Free Fire');
+                selectType(raw);
+                return;
+            }
+            if (raw === 'tdm') {
+                showSection('tournaments');
+                selectGame('BGMI');
+                selectType('tdm');
+                return;
+            }
+            if (raw === 'solobr' || raw === 'solo:battle') {
+                showSection('tournaments');
+                selectGame('Free Fire');
+                selectType('solo');
+                return;
+            }
+            if (raw === 'squadbr' || raw === 'squad:battle') {
+                showSection('tournaments');
+                selectGame('Free Fire');
+                selectType('squad');
+                return;
+            }
+            if (raw === 'soloclassic' || raw === 'bgmi:solo') {
+                showSection('tournaments');
+                selectGame('BGMI');
+                selectType('solo');
+                return;
+            }
+            if (raw === 'squadclassic' || raw === 'bgmi:squad') {
+                showSection('tournaments');
+                selectGame('BGMI');
+                selectType('squad');
+                return;
+            }
+
+            // Fallback
+            showSection('tournaments');
         }
 
         function copyEmail() {
@@ -1130,7 +1185,7 @@
             });
         }
 
-        // ─── GRAPHICAL LOGOUT CONFIRMATION (REPLACES BROWSER CONFIRM) ───
+        // ─── GRAPHICAL LOGOUT CONFIRMATION ───
         function promptLogout() {
             showGraphicalModal({
                 title: 'LOG OUT OF ARENA X?',
@@ -1188,7 +1243,7 @@
                             description: 'Compete in daily Free Fire custom room matches and win instant cash prizes!',
                             imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200',
                             btnText: 'Join Match ↗',
-                            actionUrl: ''
+                            actionUrl: '#freefire:1v1'
                         },
                         {
                             title: 'BGMI PRO CLASH CUP',
@@ -1196,7 +1251,7 @@
                             description: 'Daily BGMI tournaments with real-time room credentials and verified winners.',
                             imageUrl: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200',
                             btnText: 'Register ↗',
-                            actionUrl: ''
+                            actionUrl: '#bgmi:tdm'
                         },
                         {
                             title: '₹30 FREE WELCOME BONUS',
@@ -1204,7 +1259,7 @@
                             description: 'Every newly registered player receives ₹30 bonus cash to enter tournaments instantly!',
                             imageUrl: 'https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=1200',
                             btnText: 'Claim Now ↗',
-                            actionUrl: ''
+                            actionUrl: '#wallet'
                         }
                     ];
                 }
@@ -1317,33 +1372,7 @@
         function onBannerClicked(encodedUrl) {
             if (Math.abs(dragOffset) > 10) return;
             const url = decodeURIComponent(encodedUrl).trim();
-
-            if (!url || url === '') {
-                showSection('tournaments');
-                return;
-            }
-
-            if (url.startsWith('http://') || url.startsWith('https://')) {
-                window.open(url, '_blank', 'noopener,noreferrer');
-                return;
-            }
-
-            if (url.startsWith('#game:')) {
-                const gameName = url.replace('#game:', '').trim();
-                showSection('tournaments');
-                selectGame(gameName);
-                return;
-            }
-
-            if (url === '#wallet') {
-                showSection('wallet');
-            } else if (url === '#myTournaments') {
-                showSection('myTournaments');
-            } else if (url === '#account') {
-                showSection('account');
-            } else {
-                showSection('tournaments');
-            }
+            navigateByRedirectUrl(url);
         }
 
         function updateSliderPosition(animate = true) {
