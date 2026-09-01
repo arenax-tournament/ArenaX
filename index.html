@@ -821,7 +821,7 @@
         function showGraphicalModal({
             title = 'ARENA X',
             message = '',
-            type = 'info', // 'confirm', 'success', 'warning', 'error'
+            type = 'info',
             icon = '⚠️',
             confirmText = 'OK',
             cancelText = null,
@@ -1027,10 +1027,8 @@
                 document.getElementById('accBonusCash').textContent = bonus;
                 document.getElementById('accDepositedCash').textContent = deposited;
 
-                // Set Instagram Profile in Account card
                 document.getElementById('accInstagram').textContent = userData.instagramLink || 'Not linked';
 
-                // Locked UPI Logic: If UPI is linked, permanently disable editing
                 if (userData.upiId) {
                     document.getElementById('accUpiId').textContent = userData.upiId;
                     document.getElementById('withdrawLockedUpi').textContent = userData.upiId;
@@ -1051,11 +1049,22 @@
                 loadMyTournaments();
                 if (selectedGame && !selectedType) selectGame(selectedGame);
                 if (selectedGame && selectedType) renderTournaments('all');
+
+                // Check window hash on initial data load
+                if (window.location.hash) {
+                    handleHashRouting(window.location.hash);
+                }
             });
 
             loadTransactions();
             listenToWithdrawals();
             initAnnouncementBannerSlider();
+
+            window.addEventListener('hashchange', () => {
+                if (window.location.hash) {
+                    handleHashRouting(window.location.hash);
+                }
+            });
         }
 
         function copyEmail() {
@@ -1084,7 +1093,6 @@
             }
         }
 
-        // One-time UPI Saver in Account section
         function saveAccountUpiId() {
             if (userData?.upiId) {
                 showGraphicalModal({
@@ -1108,7 +1116,6 @@
             });
         }
 
-        // One-time UPI Saver in Wallet section
         function saveUpiId() {
             if (userData?.upiId) {
                 showGraphicalModal({
@@ -1130,7 +1137,6 @@
             });
         }
 
-        // ─── GRAPHICAL LOGOUT CONFIRMATION (REPLACES BROWSER CONFIRM) ───
         function promptLogout() {
             showGraphicalModal({
                 title: 'LOG OUT OF ARENA X?',
@@ -1188,7 +1194,7 @@
                             description: 'Compete in daily Free Fire custom room matches and win instant cash prizes!',
                             imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200',
                             btnText: 'Join Match ↗',
-                            actionUrl: ''
+                            actionUrl: '#FreeFire : 1v1'
                         },
                         {
                             title: 'BGMI PRO CLASH CUP',
@@ -1196,7 +1202,7 @@
                             description: 'Daily BGMI tournaments with real-time room credentials and verified winners.',
                             imageUrl: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200',
                             btnText: 'Register ↗',
-                            actionUrl: ''
+                            actionUrl: '#BGMI : TDM'
                         },
                         {
                             title: '₹30 FREE WELCOME BONUS',
@@ -1204,7 +1210,7 @@
                             description: 'Every newly registered player receives ₹30 bonus cash to enter tournaments instantly!',
                             imageUrl: 'https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=1200',
                             btnText: 'Claim Now ↗',
-                            actionUrl: ''
+                            actionUrl: '#wallet'
                         }
                     ];
                 }
@@ -1314,6 +1320,90 @@
             window.addEventListener('mouseup', onEnd);
         }
 
+        // ─── COMPLETE REDIRECT & HASH ROUTING CONTROLLER ───
+        function handleHashRouting(rawUrl) {
+            let url = (rawUrl || '').trim();
+            if (!url) return;
+
+            // Normalize spaces and decode
+            url = decodeURIComponent(url).trim();
+
+            if (url.startsWith('http://') || url.startsWith('https://')) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+                return;
+            }
+
+            // Remove hash mark if present
+            let clean = url.startsWith('#') ? url.substring(1).trim() : url;
+            let upper = clean.toUpperCase();
+
+            // 1. Direct App Navigation Tabs
+            if (clean === 'wallet' || upper === 'WALLET') {
+                showSection('wallet');
+                return;
+            }
+            if (clean === 'myTournaments' || upper === 'MYTOURNAMENTS' || clean === 'my' || upper === 'MY') {
+                showSection('myTournaments');
+                return;
+            }
+            if (clean === 'account' || upper === 'ACCOUNT') {
+                showSection('account');
+                return;
+            }
+
+            // 2. Free Fire Mode Routing
+            // Handles: "#FreeFire : 1v1", "#FreeFire:1v1", "FreeFire : 2v2", etc.
+            if (upper.startsWith('FREEFIRE') || upper.startsWith('FREE FIRE') || upper.startsWith('FF')) {
+                let parts = clean.split(':');
+                let modePart = parts.length > 1 ? parts[1].trim().toLowerCase() : '';
+                
+                showSection('tournaments');
+                selectGame('Free Fire');
+
+                if (modePart === '1v1') {
+                    selectType('1v1');
+                } else if (modePart === '2v2') {
+                    selectType('2v2');
+                } else if (modePart === '3v3') {
+                    selectType('3v3');
+                } else if (modePart === '4v4') {
+                    selectType('4v4');
+                } else if (modePart === '5v5') {
+                    selectType('5v5');
+                } else if (modePart === '6v6') {
+                    selectType('6v6');
+                } else if (modePart === 'solo' || modePart === 'solobr') {
+                    selectType('solo');
+                } else if (modePart === 'squad' || modePart === 'squadbr') {
+                    selectType('squad');
+                }
+                return;
+            }
+
+            // 3. BGMI Mode Routing
+            // Handles: "#BGMI : TDM", "#BGMI :", "#BGMI", "#BGMI : SOLO", "#BGMI : SQUAD"
+            if (upper.startsWith('BGMI')) {
+                let parts = clean.split(':');
+                let modePart = parts.length > 1 ? parts[1].trim().toLowerCase() : '';
+                
+                showSection('tournaments');
+                selectGame('BGMI');
+
+                if (!modePart || modePart === '' || modePart === 'tdm') {
+                    // #BGMI : TDM & #BGMI : defaults to TDM tournaments
+                    selectType('tdm');
+                } else if (modePart === 'solo') {
+                    selectType('solo');
+                } else if (modePart === 'squad') {
+                    selectType('squad');
+                }
+                return;
+            }
+
+            // Fallback: Default to tournaments view
+            showSection('tournaments');
+        }
+
         function onBannerClicked(encodedUrl) {
             if (Math.abs(dragOffset) > 10) return;
             const url = decodeURIComponent(encodedUrl).trim();
@@ -1323,27 +1413,7 @@
                 return;
             }
 
-            if (url.startsWith('http://') || url.startsWith('https://')) {
-                window.open(url, '_blank', 'noopener,noreferrer');
-                return;
-            }
-
-            if (url.startsWith('#game:')) {
-                const gameName = url.replace('#game:', '').trim();
-                showSection('tournaments');
-                selectGame(gameName);
-                return;
-            }
-
-            if (url === '#wallet') {
-                showSection('wallet');
-            } else if (url === '#myTournaments') {
-                showSection('myTournaments');
-            } else if (url === '#account') {
-                showSection('account');
-            } else {
-                showSection('tournaments');
-            }
+            handleHashRouting(url);
         }
 
         function updateSliderPosition(animate = true) {
