@@ -13,7 +13,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700;800&family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700;800&family=Inter:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
@@ -52,8 +52,11 @@
         .logo { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--primary-neon); cursor: pointer; }
         .logo img { height: 34px; filter: drop-shadow(0 0 8px var(--primary-neon)); }
 
+        .topbar-right { display: flex; align-items: center; gap: 10px; }
         .wallet-badge { background: linear-gradient(135deg, rgba(233, 69, 96, 0.2), rgba(0, 243, 255, 0.15)); padding: 7px 16px; border-radius: 20px; border: 1px solid var(--primary-neon); font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; transition: 0.3s; }
         .wallet-badge:hover { transform: scale(1.04); border-color: var(--cyber-cyan); }
+        .admin-link-btn { font-size: 11px; color: var(--cyber-cyan); border: 1px solid rgba(0, 243, 255, 0.4); padding: 5px 10px; border-radius: 8px; text-decoration: none; font-weight: 800; transition: 0.2s; display: inline-flex; align-items: center; gap: 4px; }
+        .admin-link-btn:hover { background: rgba(0, 243, 255, 0.15); color: #fff; }
 
         /* ─── GRAPHICAL MODAL / DIALOG SYSTEM ─── */
         .graphical-dialog-overlay {
@@ -71,7 +74,10 @@
             padding: 16px;
         }
 
-        .graphical-dialog-overlay.active { opacity: 1; visibility: visible; }
+        .graphical-dialog-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .graphical-dialog-box {
             background: linear-gradient(145deg, rgba(22, 22, 45, 0.98), rgba(12, 12, 28, 0.98));
@@ -88,7 +94,9 @@
             overflow: hidden;
         }
 
-        .graphical-dialog-overlay.active .graphical-dialog-box { transform: scale(1) translateY(0); }
+        .graphical-dialog-overlay.active .graphical-dialog-box {
+            transform: scale(1) translateY(0);
+        }
 
         .dialog-icon-wrap {
             width: 60px;
@@ -141,7 +149,11 @@
             margin-bottom: 20px;
         }
 
-        .dialog-actions { display: flex; gap: 10px; }
+        .dialog-actions {
+            display: flex;
+            gap: 10px;
+        }
+
         .dialog-actions button {
             flex: 1;
             padding: 11px;
@@ -160,7 +172,10 @@
             border: 1px solid rgba(255, 255, 255, 0.12) !important;
         }
 
-        .dialog-btn-cancel:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+        .dialog-btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
 
         .dialog-btn-primary {
             background: linear-gradient(135deg, var(--primary-neon), #ff4b2b);
@@ -202,7 +217,10 @@
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .graphical-toast.active { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .graphical-toast.active {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
 
         /* ─── CYBER RADAR RING LOGIN OVERLAY ANIMATION ─── */
         .login-overlay {
@@ -315,7 +333,7 @@
         .google-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: #ffffff; color: #1a1a2e; border: none; padding: 13px 20px; border-radius: 12px; font-size: 14px; font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 8px; }
         .google-btn:hover { background: #f8fafc; transform: translateY(-2px); }
 
-        /* ─── WHATSAPP NUMBER VERIFICATION MODAL ─── */
+        /* ─── WHATSAPP VERIFICATION MODAL ─── */
         .whatsapp-modal-overlay {
             position: fixed;
             inset: 0;
@@ -486,6 +504,175 @@
         .success-msg { color: var(--green-live); font-size: 12px; }
         .no-data, .loading { text-align: center; padding: 30px; color: var(--text-sub); }
         @media (max-width: 600px) { .type-grid { grid-template-columns: 1fr 1fr; } }
+
+        /* ─── CUSTOMER CARE FLOATING OVERLAY & DOCK (MATCHED TO ARENA X THEME) ─── */
+        .care-dock {
+            position: fixed;
+            right: clamp(14px, 3vw, 26px);
+            bottom: clamp(74px, 8vw, 86px);
+            z-index: 120;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+            transition: opacity 0.3s ease;
+        }
+        .care-dock.hidden {
+            display: none !important;
+        }
+        .care-panel {
+            width: min(320px, calc(100vw - 32px));
+            padding: 22px 20px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(145deg, rgba(20, 20, 42, 0.98), rgba(10, 10, 24, 0.98));
+            backdrop-filter: blur(20px);
+            border: 1.5px solid var(--primary-neon);
+            border-radius: 20px;
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.85), 0 0 30px rgba(233, 69, 96, 0.35);
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(14px) scale(0.94);
+            transform-origin: bottom right;
+            pointer-events: none;
+            transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.22s ease, visibility 0.28s;
+        }
+        .care-panel.open {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .care-heading {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(233, 69, 96, 0.45);
+            line-height: 1.2;
+            margin: 0;
+        }
+        .care-subtitle {
+            color: var(--text-sub);
+            font-size: 12px;
+            margin-top: 4px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .care-nav {
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .care-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 48px;
+            padding: 9px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            background: rgba(12, 12, 28, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f1f5f9;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+        .care-link:hover {
+            background: rgba(233, 69, 96, 0.15);
+            border-color: var(--cyber-cyan);
+            box-shadow: 0 0 14px rgba(0, 243, 255, 0.25);
+            transform: translateX(4px);
+            color: #ffffff;
+        }
+        .care-link.care-tg:hover { border-color: #00f3ff; }
+        .care-link.care-wa:hover { border-color: #25D366; }
+        .care-link.care-insta:hover { border-color: #e94560; }
+        .care-arrow {
+            margin-left: auto;
+            color: var(--cyber-cyan);
+            font-size: 14px;
+            font-weight: 900;
+            transition: transform 0.2s;
+        }
+        .care-link:hover .care-arrow {
+            transform: translate(2px, -2px);
+        }
+        .care-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 48px;
+            padding: 0 18px;
+            border: 1.5px solid var(--primary-neon);
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(233, 69, 96, 0.45);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            background: linear-gradient(135deg, #e94560, #a81c3b);
+            color: #ffffff;
+            font-family: 'Orbitron', 'Rajdhani', sans-serif;
+            font-weight: 800;
+            font-size: 12.5px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        .care-toggle:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 14px 34px rgba(233, 69, 96, 0.65), 0 0 25px rgba(233, 69, 96, 0.6);
+        }
+        .care-toggle svg {
+            width: 19px;
+            height: 19px;
+            filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+        }
+        .close-icon, .label-close {
+            display: none;
+        }
+        .care-toggle[aria-expanded="true"] {
+            background: linear-gradient(135deg, rgba(20, 20, 42, 0.95), rgba(10, 10, 24, 0.95));
+            border-color: var(--cyber-cyan);
+            box-shadow: 0 8px 25px rgba(0, 243, 255, 0.45);
+            color: var(--cyber-cyan);
+        }
+        .care-toggle[aria-expanded="true"] .chat-icon,
+        .care-toggle[aria-expanded="true"] .label-open {
+            display: none;
+        }
+        .care-toggle[aria-expanded="true"] .close-icon,
+        .care-toggle[aria-expanded="true"] .label-close {
+            display: block;
+        }
+        .care-footnote {
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-sub);
+            font-size: 11px;
+            font-family: 'Rajdhani', sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+        .care-dock :is(button, a):focus-visible {
+            outline: 2px solid var(--cyber-cyan);
+            outline-offset: 3px;
+        }
+        @media (max-width: 640px) {
+            .care-panel {
+                width: min(290px, calc(100vw - 32px));
+                padding: 18px 16px;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .care-panel, .care-link, .care-toggle {
+                transition-duration: 0.01ms;
+            }
+        }
     </style>
 </head>
 <body>
@@ -883,6 +1070,86 @@
         </div>
     </div>
 
+    <!-- ─── CUSTOMER CARE FLOATING OVERLAY & DOCK (VISIBLE ONLY AFTER LOGIN) ─── -->
+    <aside id="customerCareDock" class="care-dock hidden" aria-label="Customer care">
+        <section id="care-panel" data-template-id="contact-panel" class="canva-panel care-panel" aria-labelledby="panel-heading" aria-hidden="true" inert>
+            <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 2px;">
+                <div>
+                    <h2 id="panel-heading" data-template-id="panel-heading" class="canva-text care-heading">CUSTOMER SUPPORT</h2>
+                    <p data-template-id="panel-subtitle" class="canva-text care-subtitle">Direct official helpline with Arena X Admins.</p>
+                </div>
+                <div style="width: 36px; height: 36px; border-radius: 12px; background: rgba(0, 243, 255, 0.12); border: 1px solid var(--cyber-cyan); display: flex; align-items: center; justify-content: center; color: var(--cyber-cyan); flex-shrink: 0; box-shadow: 0 0 10px rgba(0,243,255,0.3);">
+                    <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                        <path d="M4 5h16v11H9l-5 4V5Z"></path>
+                        <path d="M8 9h8M8 12h5"></path>
+                    </svg>
+                </div>
+            </div>
+
+            <nav class="care-nav" aria-label="Contact channels">
+                <!-- Telegram Direct Admin -->
+                <a class="care-link care-tg" href="https://t.me/vinnu321" target="_blank" rel="noopener noreferrer">
+                    <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(0, 243, 255, 0.12); border: 1px solid rgba(0, 243, 255, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#00f3ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="m21 3-3.5 18-6-5-3 3 .5-5 9-8-11 7-4-1.5L21 3Z"></path>
+                        </svg>
+                    </div>
+                    <div style="display: flex; flex-direction: column; text-align: left;">
+                        <span data-template-id="telegram-label" class="canva-link" style="color: #fff; font-weight: 800; font-size: 14.5px; font-family: 'Rajdhani', sans-serif;">Telegram Support</span>
+                        <span style="color: var(--cyber-cyan); font-size: 11px; font-family: monospace; font-weight: 700;"></span>
+                    </div>
+                    <span class="care-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <!-- WhatsApp Admin (6303809387) -->
+                <a class="care-link care-wa" href="https://wa.me/916303809387?text=Hi%20Arena%20X%20Support%2C%20I%20need%20assistance" target="_blank" rel="noopener noreferrer">
+                    <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M20 11.5a8 8 0 0 1-11.8 7l-4.2 1 1.1-4A8 8 0 1 1 20 11.5Z"></path>
+                            <path d="M9 8.5c.5 3 2.5 5 5.5 6l1.5-1.5"></path>
+                        </svg>
+                    </div>
+                    <div style="display: flex; flex-direction: column; text-align: left;">
+                        <span data-template-id="whatsapp-label" class="canva-link" style="color: #fff; font-weight: 800; font-size: 14.5px; font-family: 'Rajdhani', sans-serif;">WhatsApp Helpline</span>
+                        <span style="color: var(--whatsapp-green); font-size: 11px; font-family: monospace; font-weight: 700;"></span>
+                    </div>
+                    <span class="care-arrow" style="color: var(--whatsapp-green);" aria-hidden="true">↗</span>
+                </a>
+
+                <!-- Instagram Official -->
+                <a class="care-link care-insta" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                    <div style="width: 34px; height: 34px; border-radius: 10px; background: rgba(233, 69, 96, 0.12); border: 1px solid rgba(233, 69, 96, 0.35); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                            <circle cx="12" cy="12" r="4"></circle>
+                            <path d="M17.5 6.5h.01"></path>
+                        </svg>
+                    </div>
+                    <div style="display: flex; flex-direction: column; text-align: left;">
+                        <span data-template-id="instagram-label" class="canva-link" style="color: #fff; font-weight: 800; font-size: 14.5px; font-family: 'Rajdhani', sans-serif;">Instagram Page</span>
+                        <span style="color: var(--primary-neon); font-size: 11px; font-family: monospace; font-weight: 700;"></span>
+                    </div>
+                    <span class="care-arrow" style="color: var(--primary-neon);" aria-hidden="true">↗</span>
+                </a>
+            </nav>
+
+            <p data-template-id="panel-footnote" class="canva-text care-footnote">🔒 Official Arena X Helplines • Opens fron 9am to 4pm</p>
+        </section>
+
+        <!-- Cyber Floating Action Button -->
+        <button id="care-toggle" data-template-id="contact-toggle" class="canva-button care-toggle" type="button" aria-controls="care-panel" aria-expanded="false">
+            <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.3-4A8 8 0 1 1 20 11.5Z"></path>
+                <path d="M8.5 11.5h7"></path>
+            </svg>
+            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+                <path d="M5 5 19 19M19 5 5 19"></path>
+            </svg>
+            <span data-template-id="toggle-open-label" class="label-open">Customer Care</span>
+            <span data-template-id="toggle-close-label" class="label-close">Close</span>
+        </button>
+    </aside>
+
     <script>
         const firebaseConfig = {
             apiKey: "AIzaSyBwqjgRRtZC9RJ34m-g5r0TBOx4G7AMDjc",
@@ -1059,6 +1326,12 @@
                 hideLoading();
                 document.getElementById('authScreen').classList.remove('hidden');
                 document.getElementById('mainApp').classList.add('hidden');
+                const careDock = document.getElementById('customerCareDock');
+                if (careDock) {
+                    careDock.classList.add('hidden');
+                    const carePanel = document.getElementById('care-panel');
+                    if (carePanel) carePanel.classList.remove('open');
+                }
             }
         });
 
@@ -1068,14 +1341,17 @@
             const errorEl = document.getElementById('whatsappModalError');
             errorEl.textContent = '';
 
+            // Clean number to digits only
             let digits = input.replace(/\D/g, '');
 
+            // Strip leading 91 if 12 digits, or leading 0 if 11 digits
             if (digits.length === 12 && digits.startsWith('91')) {
                 digits = digits.slice(2);
             } else if (digits.length === 11 && digits.startsWith('0')) {
                 digits = digits.slice(1);
             }
 
+            // Must be a valid 10-digit mobile number
             if (!/^[6-9]\d{9}$/.test(digits)) {
                 errorEl.textContent = 'Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.';
                 return;
@@ -1086,12 +1362,14 @@
             showLoading('VERIFYING NUMBER', 'Checking if phone number is already registered...');
 
             try {
+                // Fetch all registered users to check if this WhatsApp number is already in use
                 const usersSnap = await db.ref('users').once('value');
                 let phoneAlreadyExists = false;
 
                 if (usersSnap.exists()) {
                     usersSnap.forEach(child => {
                         const u = child.val();
+                        // Only check other user accounts (not the current pending user)
                         if (child.key !== pendingAuthUser.uid && u) {
                             const rawExisting = (u.whatsapp || u.phone || u.whatsappNumber || '').toString().replace(/\D/g, '');
                             let existing10 = rawExisting;
@@ -1118,10 +1396,12 @@
                     return;
                 }
 
+                // Phone is unique! Register under this user and lock permanently
                 showLoading('ACTIVATING ACCOUNT', 'Adding ₹30 Welcome Bonus to your wallet...');
                 const name = pendingAuthUser.displayName || 'Gamer';
                 const txId = db.ref().push().key;
 
+                // Check if user record already exists to preserve existing data
                 const userDocSnap = await db.ref('users/' + pendingAuthUser.uid).once('value');
                 const existingData = userDocSnap.val() || {};
 
@@ -1140,6 +1420,7 @@
                     joinedTournaments: existingData.joinedTournaments || {}
                 };
 
+                // Award ₹30 welcome bonus if newly created
                 if (!existingData.wallet || existingData.wallet.bonus === undefined) {
                     updates['transactions/' + txId] = {
                         userId: pendingAuthUser.uid,
@@ -1166,6 +1447,8 @@
         function cancelWhatsAppVerification() {
             document.getElementById('whatsappModalOverlay').classList.remove('active');
             pendingAuthUser = null;
+            const careDock = document.getElementById('customerCareDock');
+            if (careDock) careDock.classList.add('hidden');
             auth.signOut();
         }
 
@@ -1174,6 +1457,11 @@
             hideLoading();
             document.getElementById('authScreen').classList.add('hidden');
             document.getElementById('mainApp').classList.remove('hidden');
+
+            // Show Customer Care dock only after login
+            const careDock = document.getElementById('customerCareDock');
+            if (careDock) careDock.classList.remove('hidden');
+
             document.getElementById('dashPlayerName').textContent = user.displayName || 'Gamer';
             document.getElementById('accEmail').textContent = user.email || 'No email available';
 
@@ -1333,6 +1621,8 @@
                 btnClass: 'dialog-btn-primary',
                 onConfirm: () => {
                     showLoading('LOGGING OUT', 'Safely closing your gaming session...');
+                    const careDock = document.getElementById('customerCareDock');
+                    if (careDock) careDock.classList.add('hidden');
                     auth.signOut().then(() => location.reload());
                 }
             });
@@ -2125,6 +2415,44 @@
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // ─── CUSTOMER CARE FLOATING OVERLAY SCRIPT ───
+        (function initCustomerCareOverlay() {
+            const toggle = document.getElementById('care-toggle');
+            const panel = document.getElementById('care-panel');
+            if (!toggle || !panel) return;
+
+            function setCareOpen(open, returnFocus = false) {
+                panel.classList.toggle('open', open);
+                panel.setAttribute('aria-hidden', String(!open));
+                panel.inert = !open;
+                toggle.setAttribute('aria-expanded', String(open));
+                if (open) {
+                    const firstLink = panel.querySelector('a');
+                    if (firstLink) firstLink.focus();
+                } else if (returnFocus) {
+                    toggle.focus();
+                }
+            }
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                setCareOpen(toggle.getAttribute('aria-expanded') !== 'true');
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+                    setCareOpen(false, true);
+                }
+            });
+
+            document.addEventListener('pointerdown', (event) => {
+                if (toggle.getAttribute('aria-expanded') === 'true' &&
+                    !panel.contains(event.target) && !toggle.contains(event.target)) {
+                    setCareOpen(false);
+                }
+            });
+        })();
     </script>
 </body>
 </html>
