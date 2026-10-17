@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arena X – Esports Tournament Platform</title>
 
+    <meta name="description" content="Arena X Esports Tournament Platform. Join BGMI & Free Fire matches, verify WhatsApp number, and win real cash prizes!" />
     <meta property="og:title" content="Arena X – Esports Tournament Platform" />
     <meta property="og:description" content="Join BGMI, Free Fire, COD, PUBG tournaments and win real cash prizes!" />
     <meta property="og:image" content="https://raw.githubusercontent.com/vinnu-yadav/Khiladi/refs/heads/main/arena.local.png" />
@@ -28,9 +29,9 @@
             --cyber-cyan: #00f3ff;
             --gold: #ffd700;
             --green-live: #2ecc71;
+            --whatsapp-green: #25D366;
             --text-main: #f1f5f9;
             --text-sub: #a0aec0;
-            --insta-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
         html { font-size: 85%; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; font-weight: 700; -webkit-tap-highlight-color: transparent; }
@@ -70,10 +71,7 @@
             padding: 16px;
         }
 
-        .graphical-dialog-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .graphical-dialog-overlay.active { opacity: 1; visibility: visible; }
 
         .graphical-dialog-box {
             background: linear-gradient(145deg, rgba(22, 22, 45, 0.98), rgba(12, 12, 28, 0.98));
@@ -90,9 +88,7 @@
             overflow: hidden;
         }
 
-        .graphical-dialog-overlay.active .graphical-dialog-box {
-            transform: scale(1) translateY(0);
-        }
+        .graphical-dialog-overlay.active .graphical-dialog-box { transform: scale(1) translateY(0); }
 
         .dialog-icon-wrap {
             width: 60px;
@@ -145,11 +141,7 @@
             margin-bottom: 20px;
         }
 
-        .dialog-actions {
-            display: flex;
-            gap: 10px;
-        }
-
+        .dialog-actions { display: flex; gap: 10px; }
         .dialog-actions button {
             flex: 1;
             padding: 11px;
@@ -168,10 +160,7 @@
             border: 1px solid rgba(255, 255, 255, 0.12) !important;
         }
 
-        .dialog-btn-cancel:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-        }
+        .dialog-btn-cancel:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
 
         .dialog-btn-primary {
             background: linear-gradient(135deg, var(--primary-neon), #ff4b2b);
@@ -213,10 +202,7 @@
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .graphical-toast.active {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
+        .graphical-toast.active { opacity: 1; transform: translateX(-50%) translateY(0); }
 
         /* ─── CYBER RADAR RING LOGIN OVERLAY ANIMATION ─── */
         .login-overlay {
@@ -329,9 +315,82 @@
         .google-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: #ffffff; color: #1a1a2e; border: none; padding: 13px 20px; border-radius: 12px; font-size: 14px; font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 8px; }
         .google-btn:hover { background: #f8fafc; transform: translateY(-2px); }
 
-        .insta-modal-overlay { position: fixed; inset: 0; background: rgba(5, 5, 15, 0.92); backdrop-filter: blur(16px); display: flex; align-items: center; justify-content: center; z-index: 99999; opacity: 0; visibility: hidden; transition: 0.3s; }
-        .insta-modal-overlay.active { opacity: 1; visibility: visible; }
-        .insta-modal { background: rgba(15, 15, 32, 0.96); border: 2px solid #e1306c; border-radius: 20px; padding: 26px; max-width: 440px; width: 92%; }
+        /* ─── WHATSAPP NUMBER VERIFICATION MODAL ─── */
+        .whatsapp-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 15, 0.94);
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            padding: 16px;
+        }
+        .whatsapp-modal-overlay.active { opacity: 1; visibility: visible; }
+        .whatsapp-modal {
+            background: linear-gradient(145deg, rgba(20, 22, 40, 0.98), rgba(12, 14, 28, 0.98));
+            border: 2px solid var(--whatsapp-green);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(37, 211, 102, 0.35);
+            border-radius: 22px;
+            padding: 28px 24px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .wa-icon-badge {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 12px;
+            border-radius: 18px;
+            background: rgba(37, 211, 102, 0.15);
+            border: 2px solid var(--whatsapp-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
+        }
+
+        .phone-input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(10, 10, 20, 0.85);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .phone-input-wrap:focus-within {
+            border-color: var(--whatsapp-green);
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.35);
+        }
+        .phone-prefix {
+            padding: 11px 12px;
+            background: rgba(37, 211, 102, 0.15);
+            color: var(--whatsapp-green);
+            font-size: 14px;
+            font-family: monospace;
+            font-weight: 800;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .phone-input-wrap input {
+            flex: 1;
+            padding: 11px 12px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            outline: none;
+            font-family: monospace;
+        }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 20px 16px; }
         .section-title { font-size: 20px; font-weight: 800; margin-bottom: 18px; color: var(--primary-neon); border-left: 4px solid var(--primary-neon); padding-left: 12px; }
@@ -471,24 +530,40 @@
         </div>
     </div>
 
-    <!-- Instagram Verification Modal -->
-    <div id="instagramModalOverlay" class="insta-modal-overlay">
-        <div class="insta-modal">
-            <h2 style="color: #fff; font-size: 16px; text-align: center; margin-bottom: 4px;">PLAYER VERIFICATION</h2>
-            <p style="color: #cbd5e1; font-size: 11.5px; text-align: center; margin-bottom: 12px;">
-                Enter your Instagram Profile Link to activate account and claim your <strong style="color: var(--gold);">₹30 Free Welcome Bonus</strong>.
+    <!-- ─── WHATSAPP NUMBER VERIFICATION MODAL ─── -->
+    <div id="whatsappModalOverlay" class="whatsapp-modal-overlay">
+        <div class="whatsapp-modal">
+            <div class="wa-icon-badge">💬</div>
+            <h2 style="color: #fff; font-size: 17px; margin-bottom: 4px;">WHATSAPP VERIFICATION</h2>
+            <p style="color: #cbd5e1; font-size: 11.5px; margin-bottom: 14px; line-height: 1.5;">
+                Enter your active <strong style="color: var(--whatsapp-green);">WhatsApp Number</strong> for tournament room credentials, match notifications & claiming your <strong style="color: var(--gold);">₹30 Free Welcome Bonus</strong>.
             </p>
-            <div class="form-group">
-                <label>Instagram Profile URL</label>
-                <input type="url" id="userInstaInput" placeholder="https://www.instagram.com/your_username" />
+
+            <div style="background: rgba(37, 211, 102, 0.08); border: 1px solid rgba(37, 211, 102, 0.25); border-radius: 10px; padding: 10px; margin-bottom: 14px; font-size: 11px; color: #a7f3d0; text-align: left;">
+                🔒 <strong>Permanent Lock:</strong> This number cannot be changed once submitted and must be unique to your account.
             </div>
-            <div id="instaModalError" class="error-msg" style="text-align: center; margin-bottom: 8px;"></div>
+
+            <div class="form-group" style="text-align: left; margin-bottom: 12px;">
+                <label style="color: var(--whatsapp-green); font-size: 12px; margin-bottom: 6px; display: block;">10-Digit WhatsApp Number</label>
+                <div class="phone-input-wrap">
+                    <span class="phone-prefix">+91</span>
+                    <input type="tel" id="userWhatsAppInput" maxlength="10" placeholder="9876543210" autocomplete="tel-national" />
+                </div>
+            </div>
+
+            <div id="whatsappModalError" class="error-msg" style="text-align: center; margin-bottom: 12px; min-height: 18px; font-weight: 800;"></div>
+
             <div class="modal-actions">
-                <button class="btn-cancel" onclick="cancelInstaVerification()">Cancel & Exit</button>
-                <button class="btn" style="background: var(--insta-gradient);" onclick="submitInstaVerification()">Activate (Claim ₹30)</button>
+                <button class="btn-cancel" onclick="cancelWhatsAppVerification()">Cancel & Exit</button>
+                <button class="btn" style="background: linear-gradient(135deg, var(--whatsapp-green), #1eb854); color: #000; font-weight: 900;" onclick="submitWhatsAppVerification()">
+                    Verify & Claim ₹30 ➔
+                </button>
             </div>
         </div>
     </div>
+
+    <!-- Backward compatibility alias if needed -->
+    <div id="instagramModalOverlay" style="display:none;"></div>
 
     <div class="app-layer">
         <!-- Auth Screen -->
@@ -499,7 +574,7 @@
                 <div class="bonus-banner">
                     <h4>🎁 NEW PLAYER BONUS</h4>
                     <div class="bonus-amt">₹30 FREE CASH</div>
-                    <p style="color: var(--text-sub); font-size: 10.5px;">Get ₹30 welcome bonus upon sign-in!</p>
+                    <p style="color: var(--text-sub); font-size: 10.5px;">Get ₹30 welcome bonus upon sign-in with WhatsApp verification!</p>
                 </div>
                 <button class="google-btn" id="googleSignInBtn">
                     <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="16" alt="Google" />
@@ -595,13 +670,15 @@
                         <h3 style="text-align:center; color: var(--primary-neon); margin-bottom: 3px; font-size: 16px;">💳 Add Funds</h3>
                         <div class="topup-amounts">
                             <button class="amount-btn" onclick="selectAmount(event,50)">₹50</button>
-                            <button class="amount-btn" onclick="selectAmount(event,100)">₹100</button>
+                            <button class="amount-btn selected" onclick="selectAmount(event,100)">₹100</button>
                             <button class="amount-btn" onclick="selectAmount(event,200)">₹200</button>
                             <button class="amount-btn" onclick="selectAmount(event,500)">₹500</button>
                             <button class="amount-btn" onclick="selectAmount(event,1000)">₹1000</button>
                             <button class="amount-btn" onclick="selectAmount(event,2000)">₹2000</button>
                         </div>
-                        <button class="btn" onclick="window.open('https://www.instagram.com/_arena_x_?igsi=MWJlMDE2aDEwdjVmYw==','_blank')">Contact Admin to Top Up</button>
+                        <button class="btn" style="background: linear-gradient(135deg, #0088cc, #00c6ff); color: #fff; font-weight: 900; box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);" onclick="contactAdminToTopup()">
+                            ✈️ Contact Admin to Top Up (t.me/vinnu321)
+                        </button>
                     </div>
 
                     <!-- UPI One-Time Linking Section (Only shown if UPI not yet saved) -->
@@ -627,9 +704,28 @@
                             </div>
                             <span class="locked-badge">🔒 Locked</span>
                         </div>
+
+                        <!-- Withdrawable vs Bonus Breakdown -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;">
+                            <div style="background: rgba(46, 204, 113, 0.1); border: 1px solid rgba(46, 204, 113, 0.3); border-radius: 8px; padding: 8px 10px; text-align: center;">
+                                <span style="font-size: 10px; color: #cbd5e1; display: block;">Withdrawable Cash</span>
+                                <span style="font-size: 16px; color: var(--green-live); font-family: 'Orbitron', sans-serif; font-weight: 800;">₹<span id="withdrawWithdrawableBalance">0</span></span>
+                                <span style="font-size: 9px; color: var(--text-sub); display: block;">(Deposited / Earnings)</span>
+                            </div>
+                            <div style="background: rgba(255, 215, 0, 0.08); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 8px; padding: 8px 10px; text-align: center;">
+                                <span style="font-size: 10px; color: #cbd5e1; display: block;">Non-Withdrawable</span>
+                                <span style="font-size: 16px; color: var(--gold); font-family: 'Orbitron', sans-serif; font-weight: 800;">₹<span id="withdrawBonusBalance">0</span></span>
+                                <span style="font-size: 9px; color: #e2e8f0; display: block;">(Bonus / Matches Only)</span>
+                            </div>
+                        </div>
+
+                        <div style="font-size: 10.5px; color: #94a3b8; background: rgba(0,0,0,0.3); border-radius: 6px; padding: 7px 10px; margin-top: 8px; line-height: 1.4; text-align: left;">
+                            ⚠️ <strong>Withdrawal Policy:</strong> Bonus cash cannot be withdrawn and can only be used to enter matches. You can only withdraw from your deposited cash and match earnings (Min. ₹200).
+                        </div>
+
                         <div class="form-group" style="margin-top: 10px;">
                             <label>Withdrawal Amount (₹)</label>
-                            <input type="number" id="withdrawAmount" placeholder="Min. ₹200" min="200" />
+                            <input type="number" id="withdrawAmount" placeholder="Min. ₹200 (From Deposited/Earnings)" min="200" />
                         </div>
                         <button class="btn" id="withdrawSubmitBtn" style="background: var(--green-live);" onclick="requestWithdrawal()">Request Withdrawal</button>
                         <div id="withdrawMsg" style="margin-top:8px; text-align:center;"></div>
@@ -666,21 +762,27 @@
                             </div>
                         </div>
 
-                        <!-- 2. Instagram Profile Card (Same Design as Email) -->
+                        <!-- 2. WhatsApp Number Card (Locked & Protected - Cannot be modified) -->
                         <div class="account-card tilt-card">
-                            <h3 style="color: #e1306c; font-size: 15px;">📸 Instagram Profile</h3>
-                            <p style="color: var(--text-sub); font-size: 11px; margin-top: 2px;">Player Identification & Community</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h3 style="color: var(--whatsapp-green); font-size: 15px;">💬 WhatsApp Contact</h3>
+                                <span class="locked-badge" style="background: rgba(37, 211, 102, 0.15); color: var(--whatsapp-green); border-color: rgba(37, 211, 102, 0.35);">🔒 Locked</span>
+                            </div>
+                            <p style="color: var(--text-sub); font-size: 11px; margin-top: 2px;">Registered Contact for Tournament Coordination</p>
                             
                             <div class="account-field">
-                                <span class="val" id="accInstagram" style="color: #e1306c;">loading...</span>
+                                <span class="val" id="accWhatsApp" style="color: var(--whatsapp-green); font-size: 15px;">loading...</span>
                                 <div style="display: flex; gap: 6px; align-items: center;">
-                                    <button class="copy-chip" onclick="copyInstagram()">Copy</button>
-                                    <button class="copy-chip" style="background: rgba(225, 48, 108, 0.2); border-color: #e1306c; color: #fff;" onclick="visitInstagram()">Visit ↗</button>
+                                    <button class="copy-chip" onclick="copyWhatsApp()">Copy</button>
+                                    <button class="copy-chip" style="background: rgba(37, 211, 102, 0.2); border-color: var(--whatsapp-green); color: var(--whatsapp-green);" onclick="chatOnWhatsApp()">Chat 💬</button>
                                 </div>
                             </div>
                             <div style="margin-top: 8px; font-size: 11px; color: var(--green-live); display: flex; align-items: center; gap: 4px;">
-                                <span>✔</span> Verified & Protected
+                                <span>✔</span> Verified & Permanently Linked
                             </div>
+                            <p style="font-size: 10px; color: var(--text-sub); margin-top: 6px;">
+                                🔒 This WhatsApp number is permanently locked to your account for room credentials & payouts.
+                            </p>
                         </div>
 
                         <!-- 3. Wallet UPI ID Card (LOCKED - NO UPDATE OPTION) -->
@@ -745,7 +847,7 @@
                     <div class="tilt-card" style="padding: 20px; max-width: 480px; margin: 20px auto 0; text-align: center;">
                         <h3 style="color: #fff; font-size: 15px; margin-bottom: 6px;">🚪 Session Security</h3>
                         <p style="color: var(--text-sub); font-size: 11.5px; margin-bottom: 16px;">
-                            Sign out of this session safely. Your wallet balance and match registrations remain secured in your account.
+                            Sign out of this session safely. Your wallet balance, match registrations, and verified phone number remain secured in your account.
                         </p>
                         <button class="btn-logout" onclick="promptLogout()">
                             <span>🚪</span>
@@ -755,7 +857,7 @@
                 </div>
             </div>
 
-            <!-- Bottom Navigation with Account replacing standalone Logout -->
+            <!-- Bottom Navigation with Account -->
             <div class="bottom-nav">
                 <button onclick="showSection('tournaments')" id="navTournaments" class="active"><span style="font-size:16px;">🏆</span> Tournaments</button>
                 <button onclick="showSection('wallet')" id="navWallet"><span style="font-size:16px;">💳</span> Wallet</button>
@@ -889,20 +991,28 @@
         auth.getRedirectResult().then(async (result) => {
             if (result && result.user) {
                 showLoading('VERIFYING ACCOUNT', 'Setting up player session...');
-                await checkUserInstagram(result.user);
+                await checkUserWhatsApp(result.user);
             }
         }).catch(err => {
             console.warn("Redirect result:", err);
             hideLoading();
         });
 
-        async function checkUserInstagram(user) {
+        // Check if user already has a registered WhatsApp number
+        async function checkUserWhatsApp(user) {
             try {
                 const snap = await db.ref('users/' + user.uid).once('value');
-                if (!snap.exists() || !snap.val().instagramLink) {
+                const val = snap.val();
+                const hasWhatsApp = val && (val.whatsapp || val.phone || val.whatsappNumber);
+
+                if (!snap.exists() || !hasWhatsApp) {
                     pendingAuthUser = user;
                     hideLoading();
-                    document.getElementById('instagramModalOverlay').classList.add('active');
+                    const inputEl = document.getElementById('userWhatsAppInput');
+                    if (inputEl) inputEl.value = '';
+                    const errEl = document.getElementById('whatsappModalError');
+                    if (errEl) errEl.textContent = '';
+                    document.getElementById('whatsappModalOverlay').classList.add('active');
                 } else {
                     onUserLoggedIn(user);
                 }
@@ -921,7 +1031,7 @@
                 const res = await auth.signInWithPopup(provider);
                 if (res && res.user) {
                     showLoading('VERIFYING ACCOUNT', 'Loading your wallet and stats...');
-                    await checkUserInstagram(res.user);
+                    await checkUserWhatsApp(res.user);
                 }
             } catch (err) {
                 console.warn("Auth error:", err);
@@ -943,7 +1053,7 @@
         auth.onAuthStateChanged(async (user) => {
             if (user) {
                 showLoading('AUTHENTICATING', 'Welcome back! Fetching your game stats...');
-                await checkUserInstagram(user);
+                await checkUserWhatsApp(user);
             } else {
                 currentUser = null;
                 hideLoading();
@@ -952,50 +1062,109 @@
             }
         });
 
-        function submitInstaVerification() {
-            const input = document.getElementById('userInstaInput').value.trim();
-            const errorEl = document.getElementById('instaModalError');
-            const instaRegex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/([a-zA-Z0-9_\.]{1,30})/i;
+        // ─── SUBMIT WHATSAPP VERIFICATION WITH DUPLICATE PHONE CHECK ───
+        async function submitWhatsAppVerification() {
+            const input = document.getElementById('userWhatsAppInput').value.trim();
+            const errorEl = document.getElementById('whatsappModalError');
+            errorEl.textContent = '';
 
-            if (!instaRegex.test(input)) {
-                errorEl.textContent = 'Please enter a valid Instagram profile URL';
+            let digits = input.replace(/\D/g, '');
+
+            if (digits.length === 12 && digits.startsWith('91')) {
+                digits = digits.slice(2);
+            } else if (digits.length === 11 && digits.startsWith('0')) {
+                digits = digits.slice(1);
+            }
+
+            if (!/^[6-9]\d{9}$/.test(digits)) {
+                errorEl.textContent = 'Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9.';
                 return;
             }
+
             if (!pendingAuthUser) return;
 
-            showLoading('ACTIVATING ACCOUNT', 'Adding ₹30 Welcome Bonus to your wallet...');
-            const name = pendingAuthUser.displayName || 'Gamer';
-            const cleanUrl = input.startsWith('http') ? input : 'https://' + input;
-            const txId = db.ref().push().key;
+            showLoading('VERIFYING NUMBER', 'Checking if phone number is already registered...');
 
-            const updates = {};
-            updates['users/' + pendingAuthUser.uid] = {
-                name: name,
-                email: pendingAuthUser.email || '',
-                photoURL: pendingAuthUser.photoURL || '',
-                instagramLink: cleanUrl,
-                wallet: { bonus: 30, deposited: 0 },
-                rank: '⚡ BRONZE',
-                createdAt: Date.now(),
-                joinedTournaments: {}
-            };
-            updates['transactions/' + txId] = {
-                userId: pendingAuthUser.uid,
-                userName: name,
-                amount: 30,
-                type: 'bonus',
-                description: '🎉 Welcome Signup Bonus (₹30)',
-                timestamp: Date.now()
-            };
+            try {
+                const usersSnap = await db.ref('users').once('value');
+                let phoneAlreadyExists = false;
 
-            db.ref().update(updates).then(() => {
-                document.getElementById('instagramModalOverlay').classList.remove('active');
+                if (usersSnap.exists()) {
+                    usersSnap.forEach(child => {
+                        const u = child.val();
+                        if (child.key !== pendingAuthUser.uid && u) {
+                            const rawExisting = (u.whatsapp || u.phone || u.whatsappNumber || '').toString().replace(/\D/g, '');
+                            let existing10 = rawExisting;
+                            if (existing10.length === 12 && existing10.startsWith('91')) existing10 = existing10.slice(2);
+                            if (existing10.length === 11 && existing10.startsWith('0')) existing10 = existing10.slice(1);
+
+                            if (existing10 === digits) {
+                                phoneAlreadyExists = true;
+                            }
+                        }
+                    });
+                }
+
+                if (phoneAlreadyExists) {
+                    hideLoading();
+                    errorEl.innerHTML = '<span style="color: #ff4b2b; font-weight: 800; font-size: 13px;">❌ Already existed phone number</span>';
+                    showGraphicalModal({
+                        title: 'PHONE NUMBER ALREADY REGISTERED',
+                        message: 'Already existed phone number! This WhatsApp number is already registered under another account. Each user must have a unique phone number.',
+                        type: 'warning',
+                        icon: '🚫',
+                        confirmText: 'Try Another Number'
+                    });
+                    return;
+                }
+
+                showLoading('ACTIVATING ACCOUNT', 'Adding ₹30 Welcome Bonus to your wallet...');
+                const name = pendingAuthUser.displayName || 'Gamer';
+                const txId = db.ref().push().key;
+
+                const userDocSnap = await db.ref('users/' + pendingAuthUser.uid).once('value');
+                const existingData = userDocSnap.val() || {};
+
+                const updates = {};
+                updates['users/' + pendingAuthUser.uid] = {
+                    name: existingData.name || name,
+                    email: pendingAuthUser.email || existingData.email || '',
+                    photoURL: pendingAuthUser.photoURL || existingData.photoURL || '',
+                    whatsapp: digits,
+                    phone: digits,
+                    whatsappNumber: digits,
+                    whatsappLink: 'https://wa.me/91' + digits,
+                    wallet: existingData.wallet || { bonus: 30, deposited: 0 },
+                    rank: existingData.rank || '⚡ BRONZE',
+                    createdAt: existingData.createdAt || Date.now(),
+                    joinedTournaments: existingData.joinedTournaments || {}
+                };
+
+                if (!existingData.wallet || existingData.wallet.bonus === undefined) {
+                    updates['transactions/' + txId] = {
+                        userId: pendingAuthUser.uid,
+                        userName: name,
+                        amount: 30,
+                        type: 'bonus',
+                        description: '🎉 Welcome Signup Bonus (₹30)',
+                        timestamp: Date.now()
+                    };
+                }
+
+                await db.ref().update(updates);
+                document.getElementById('whatsappModalOverlay').classList.remove('active');
+                showGraphicalToast('WhatsApp linked & ₹30 Bonus credited!', '🎁');
                 onUserLoggedIn(pendingAuthUser);
-            });
+
+            } catch (err) {
+                console.error("Verification error:", err);
+                hideLoading();
+                errorEl.textContent = 'Error: ' + err.message;
+            }
         }
 
-        function cancelInstaVerification() {
-            document.getElementById('instagramModalOverlay').classList.remove('active');
+        function cancelWhatsAppVerification() {
+            document.getElementById('whatsappModalOverlay').classList.remove('active');
             pendingAuthUser = null;
             auth.signOut();
         }
@@ -1006,7 +1175,6 @@
             document.getElementById('authScreen').classList.add('hidden');
             document.getElementById('mainApp').classList.remove('hidden');
             document.getElementById('dashPlayerName').textContent = user.displayName || 'Gamer';
-
             document.getElementById('accEmail').textContent = user.email || 'No email available';
 
             db.ref('users/' + user.uid).on('value', snap => {
@@ -1027,7 +1195,13 @@
                 document.getElementById('accBonusCash').textContent = bonus;
                 document.getElementById('accDepositedCash').textContent = deposited;
 
-                document.getElementById('accInstagram').textContent = userData.instagramLink || 'Not linked';
+                const withEl = document.getElementById('withdrawWithdrawableBalance');
+                if (withEl) withEl.textContent = deposited;
+                const bonEl = document.getElementById('withdrawBonusBalance');
+                if (bonEl) bonEl.textContent = bonus;
+
+                const phoneVal = userData.whatsapp || userData.phone || userData.whatsappNumber;
+                document.getElementById('accWhatsApp').textContent = phoneVal ? ('+91 ' + phoneVal) : 'Not linked';
 
                 if (userData.upiId) {
                     document.getElementById('accUpiId').textContent = userData.upiId;
@@ -1050,7 +1224,6 @@
                 if (selectedGame && !selectedType) selectGame(selectedGame);
                 if (selectedGame && selectedType) renderTournaments('all');
 
-                // Check window hash on initial data load
                 if (window.location.hash) {
                     handleHashRouting(window.location.hash);
                 }
@@ -1075,22 +1248,34 @@
             }
         }
 
-        function copyInstagram() {
-            const insta = document.getElementById('accInstagram').textContent;
-            if (insta && insta !== 'loading...' && insta !== 'Not linked') {
-                navigator.clipboard.writeText(insta);
-                showGraphicalToast('Instagram profile URL copied!', '📋');
+        function copyWhatsApp() {
+            const num = (userData?.whatsapp || userData?.phone || userData?.whatsappNumber || '').toString().trim();
+            if (num) {
+                navigator.clipboard.writeText(num);
+                showGraphicalToast('WhatsApp number copied!', '📋');
+            } else {
+                showGraphicalToast('No WhatsApp number linked!', '⚠️');
             }
         }
 
-        function visitInstagram() {
-            const insta = document.getElementById('accInstagram').textContent.trim();
-            if (insta && insta !== 'loading...' && insta !== 'Not linked') {
-                const url = insta.startsWith('http') ? insta : 'https://' + insta;
-                window.open(url, '_blank', 'noopener,noreferrer');
+        function chatOnWhatsApp() {
+            const raw = (userData?.whatsapp || userData?.phone || userData?.whatsappNumber || '').toString().replace(/\D/g, '');
+            if (raw) {
+                const full = raw.length === 10 ? '91' + raw : raw;
+                window.open(`https://wa.me/${full}`, '_blank', 'noopener,noreferrer');
             } else {
-                showGraphicalToast('No Instagram profile linked yet!', '⚠️');
+                showGraphicalToast('No WhatsApp number linked!', '⚠️');
             }
+        }
+
+        let currentSelectedTopup = 100;
+
+        function contactAdminToTopup() {
+            window.open('https://t.me/vinnu321', '_blank', 'noopener,noreferrer');
+        }
+
+        function contactAdminOnWhatsApp() {
+            contactAdminToTopup();
         }
 
         function saveAccountUpiId() {
@@ -1325,7 +1510,6 @@
             let url = (rawUrl || '').trim();
             if (!url) return;
 
-            // Normalize spaces and decode
             url = decodeURIComponent(url).trim();
 
             if (url.startsWith('http://') || url.startsWith('https://')) {
@@ -1333,11 +1517,9 @@
                 return;
             }
 
-            // Remove hash mark if present
             let clean = url.startsWith('#') ? url.substring(1).trim() : url;
             let upper = clean.toUpperCase();
 
-            // 1. Direct App Navigation Tabs
             if (clean === 'wallet' || upper === 'WALLET') {
                 showSection('wallet');
                 return;
@@ -1351,8 +1533,6 @@
                 return;
             }
 
-            // 2. Free Fire Mode Routing
-            // Handles: "#FreeFire : 1v1", "#FreeFire:1v1", "FreeFire : 2v2", etc.
             if (upper.startsWith('FREEFIRE') || upper.startsWith('FREE FIRE') || upper.startsWith('FF')) {
                 let parts = clean.split(':');
                 let modePart = parts.length > 1 ? parts[1].trim().toLowerCase() : '';
@@ -1360,28 +1540,17 @@
                 showSection('tournaments');
                 selectGame('Free Fire');
 
-                if (modePart === '1v1') {
-                    selectType('1v1');
-                } else if (modePart === '2v2') {
-                    selectType('2v2');
-                } else if (modePart === '3v3') {
-                    selectType('3v3');
-                } else if (modePart === '4v4') {
-                    selectType('4v4');
-                } else if (modePart === '5v5') {
-                    selectType('5v5');
-                } else if (modePart === '6v6') {
-                    selectType('6v6');
-                } else if (modePart === 'solo' || modePart === 'solobr') {
-                    selectType('solo');
-                } else if (modePart === 'squad' || modePart === 'squadbr') {
-                    selectType('squad');
-                }
+                if (modePart === '1v1') selectType('1v1');
+                else if (modePart === '2v2') selectType('2v2');
+                else if (modePart === '3v3') selectType('3v3');
+                else if (modePart === '4v4') selectType('4v4');
+                else if (modePart === '5v5') selectType('5v5');
+                else if (modePart === '6v6') selectType('6v6');
+                else if (modePart === 'solo' || modePart === 'solobr') selectType('solo');
+                else if (modePart === 'squad' || modePart === 'squadbr') selectType('squad');
                 return;
             }
 
-            // 3. BGMI Mode Routing
-            // Handles: "#BGMI : TDM", "#BGMI :", "#BGMI", "#BGMI : SOLO", "#BGMI : SQUAD"
             if (upper.startsWith('BGMI')) {
                 let parts = clean.split(':');
                 let modePart = parts.length > 1 ? parts[1].trim().toLowerCase() : '';
@@ -1389,18 +1558,12 @@
                 showSection('tournaments');
                 selectGame('BGMI');
 
-                if (!modePart || modePart === '' || modePart === 'tdm') {
-                    // #BGMI : TDM & #BGMI : defaults to TDM tournaments
-                    selectType('tdm');
-                } else if (modePart === 'solo') {
-                    selectType('solo');
-                } else if (modePart === 'squad') {
-                    selectType('squad');
-                }
+                if (!modePart || modePart === '' || modePart === 'tdm') selectType('tdm');
+                else if (modePart === 'solo') selectType('solo');
+                else if (modePart === 'squad') selectType('squad');
                 return;
             }
 
-            // Fallback: Default to tournaments view
             showSection('tournaments');
         }
 
@@ -1705,6 +1868,7 @@
             };
             updates['tournaments/' + window.currentJoinId + '/participants/' + currentUser.uid] = {
                 name: userData.name || 'Gamer',
+                phone: userData.whatsapp || userData.phone || '',
                 inGameUid: uid,
                 inGameName: ign,
                 joinedAt: Date.now()
@@ -1858,50 +2022,86 @@
         }
 
         function selectAmount(ev, amt) {
+            currentSelectedTopup = amt;
             document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
             ev.target.classList.add('selected');
         }
 
         async function requestWithdrawal() {
             const amt = parseInt(document.getElementById('withdrawAmount').value) || 0;
+            const msgEl = document.getElementById('withdrawMsg');
+            msgEl.innerHTML = '';
+
             if (amt < 200) {
-                document.getElementById('withdrawMsg').innerHTML = '<span class="error-msg">Min. withdrawal is ₹200</span>';
+                msgEl.innerHTML = '<span class="error-msg">⚠️ Minimum withdrawal amount is ₹200</span>';
                 return;
             }
+
             const wallet = userData?.wallet || { bonus: 0, deposited: 0 };
-            const total = (wallet.bonus || 0) + (wallet.deposited || 0);
-            if (total < amt) {
-                document.getElementById('withdrawMsg').innerHTML = '<span class="error-msg">Insufficient Balance</span>';
+            const bonus = Number(wallet.bonus || 0);
+            const withdrawable = Number(wallet.deposited || 0) + Number(wallet.winnings || 0) + Number(wallet.earnings || 0);
+
+            if (withdrawable < 200) {
+                msgEl.innerHTML = `<span class="error-msg">⚠️ Cannot withdraw: Withdrawable balance (Deposited/Earnings) is ₹${withdrawable}. Bonus cash (₹${bonus}) cannot be withdrawn. Minimum withdrawal is ₹200.</span>`;
+                showGraphicalModal({
+                    title: 'BONUS CASH CANNOT BE WITHDRAWN',
+                    message: `Bonus cash (₹${bonus}) cannot be withdrawn and can only be used to enter tournaments.\n\nYour withdrawable balance (Deposited / Earnings) is ₹${withdrawable}. Minimum withdrawal is ₹200.`,
+                    type: 'warning',
+                    icon: '🚫'
+                });
+                return;
+            }
+
+            if (amt > withdrawable) {
+                msgEl.innerHTML = `<span class="error-msg">⚠️ Insufficient withdrawable balance! You have ₹${withdrawable} available. Bonus cash (₹${bonus}) cannot be withdrawn.</span>`;
+                showGraphicalModal({
+                    title: 'EXCEEDS WITHDRAWABLE BALANCE',
+                    message: `You requested ₹${amt}, but your withdrawable balance (Deposited / Earnings) is only ₹${withdrawable}.\n\nBonus cash (₹${bonus}) cannot be withdrawn.`,
+                    type: 'warning',
+                    icon: '💳'
+                });
                 return;
             }
 
             const wid = db.ref().push().key;
             const txId = db.ref().push().key;
             const updates = {};
-            updates['users/' + currentUser.uid + '/wallet'] = { bonus: 0, deposited: total - amt };
+
+            // Deduct ONLY from deposited / earnings, leaving bonus cash completely untouched!
+            const newDeposited = withdrawable - amt;
+            updates['users/' + currentUser.uid + '/wallet'] = {
+                bonus: bonus,
+                deposited: newDeposited
+            };
+
             updates['transactions/' + txId] = {
                 userId: currentUser.uid,
                 amount: -amt,
                 type: 'withdraw',
-                description: '💸 Withdrawal Request (Pending)',
+                description: `💸 Withdrawal Request (Pending) - ₹${amt}`,
                 timestamp: Date.now()
             };
             updates['withdrawals/' + wid] = {
                 userId: currentUser.uid,
                 userName: userData?.name || 'Gamer',
+                userEmail: currentUser.email || '',
+                whatsapp: userData?.whatsapp || userData?.phone || userData?.whatsappNumber || '',
                 upiId: userData?.upiId,
                 amount: amt,
+                deductedDeposited: amt,
+                deductedBonus: 0,
                 status: 'pending',
                 requestedAt: Date.now()
             };
             await db.ref().update(updates);
             showGraphicalModal({
                 title: 'WITHDRAWAL SUBMITTED',
-                message: `💸 Your withdrawal request of ₹${amt} to locked UPI (${userData?.upiId}) has been submitted for admin approval.`,
+                message: `💸 Your withdrawal request of ₹${amt} to locked UPI (${userData?.upiId}) has been submitted for admin approval.\n\nDeducted from: Deposited / Earnings (Withdrawable). Your ₹${bonus} bonus cash remains in your wallet for tournament matches.`,
                 type: 'success',
                 icon: '✅'
             });
-            document.getElementById('withdrawMsg').innerHTML = '<span class="success-msg">✅ Withdrawal Request Submitted!</span>';
+            msgEl.innerHTML = '<span class="success-msg">✅ Withdrawal Request Submitted!</span>';
+            document.getElementById('withdrawAmount').value = '';
         }
 
         function showSection(sec) {
